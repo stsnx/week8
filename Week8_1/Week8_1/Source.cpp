@@ -9,6 +9,17 @@ bool sortin(info x, info y)
 {
 	return x.score > y.score;
 }
+void printsort(int n)
+{
+	sort(student, student + n, sortin);
+	for (int i = 0; i < n; i++)
+	{
+		if (student[i].score > 100 || student[i].score < 0)
+			cout << student[i].name << " error" << endl;
+		else
+			cout << student[i].name << ' ' << student[i].score << endl;
+	}
+}
 int main()
 {
 	int n;
@@ -29,14 +40,6 @@ int main()
 			student[i].score = -1;
 		}
 	}
-	sort(student, student + n, sortin);
-	for (int i = 0; i < n; i++)
-	{
-		if (student[i].score > 100 || student[i].score < 0)
-		cout << student[i].name <<" error"<< endl;
-		else 
-		cout << student[i].name << ' ' << student[i].score << endl;
-	}
+	printsort(n);
 	return 0;
 }
-
